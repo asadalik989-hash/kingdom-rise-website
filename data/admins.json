@@ -1,0 +1,31 @@
+[
+  {
+    "adminId": "KR-ADMIN-001",
+    "fullName": "Kingdom Rise Super Administrator",
+    "email": "admin@kingdomrise.com",
+    "phone": "+966-12-650-0000",
+    "passwordHash": "260df6719289c1e4d5cf79f06218a5615936652e1c01280311b2bd18bff568d6b53c6b65723ff6b0059cfe62163366b44168a2d182c213a8c91a55c25f85f7b7",
+    "salt": "530e322c1103591321a2f06c567e512d418aa1d08548be6c6f56fc13f3d5dba9",
+    "role": "SUPER_ADMIN",
+    "status": "ACTIVE",
+    "failedLoginAttempts": 0,
+    "lockedUntil": null,
+    "createdAt": "2026-09-25T18:31:40.231Z",
+    "lastLogin": "2026-09-25T18:31:57.283Z",
+    "createdBy": "SYSTEM_PROVISION"
+  },
+  {
+    "adminId": "KR-ADMIN-002",
+    "fullName": "Eng. Tariq Al-Ghamdi",
+    "email": "tariq@kingdomrise.com",
+    "passwordHash": "37aa9dcd4cd950c9107f07d2a6a8f8dd9380b28e58ce4884cbab65a49702cf0fd4e4f82a8255d27a313bf05078dde2f9bd14d0daac22448d0b5bc3bba086dfd1",
+    "salt": "a8e4fb070d3a2be804d2e30f6525fce82ea38b8b9be7d35df8ddc291ba9d2058",
+    "role": "ADMIN",
+    "status": "ACTIVE",
+    "failedLoginAttempts": 0,
+    "lockedUntil": null,
+    "createdAt": "2026-09-25T18:31:57.392Z",
+    "lastLogin": "2026-09-25T18:32:04.146Z",
+    "createdBy": "KR-ADMIN-001"
+  }
+]

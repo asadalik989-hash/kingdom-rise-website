@@ -1,0 +1,419 @@
+{
+  "entities": {
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized administrator or editor account profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "format": "email", "description": "Corporate email address" },
+        "displayName": { "type": "string", "description": "Full legal or display name" },
+        "role": { "type": "string", "enum": ["SUPER_ADMIN", "ADMIN", "EDITOR"], "description": "Role-based access level" },
+        "status": { "type": "string", "enum": ["active", "suspended"], "description": "Account authorization status" },
+        "avatarUrl": { "type": "string", "description": "Profile picture URL" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Account creation ISO timestamp" },
+        "lastLoginAt": { "type": "string", "format": "date-time", "description": "Last authenticated ISO timestamp" }
+      },
+      "required": ["id", "email", "displayName", "role", "status", "createdAt"]
+    },
+    "ProjectCategory": {
+      "title": "ProjectCategory",
+      "description": "Classification category for engineering and construction projects",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique category identifier" },
+        "name": { "type": "string", "description": "Category name" },
+        "slug": { "type": "string", "description": "URL-friendly slug" },
+        "description": { "type": "string", "description": "Brief description" },
+        "sector": { "type": "string", "enum": ["Civil", "Electrical", "Mechanical", "Oil & Gas", "Water & Power", "Aviation", "Industrial"], "description": "Primary industry sector" },
+        "displayOrder": { "type": "number", "description": "Sorting index" },
+        "isActive": { "type": "boolean", "description": "Whether active" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "slug", "sector", "displayOrder", "isActive", "createdAt"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Verified construction and infrastructure contract record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique project identifier" },
+        "title": { "type": "string", "description": "Project title" },
+        "slug": { "type": "string", "description": "URL slug" },
+        "client": { "type": "string", "description": "Client or contracting authority" },
+        "year": { "type": "string", "description": "Execution or delivery year" },
+        "era": { "type": "string", "enum": ["2002-2008", "2009-2015", "2016-2020", "2021-2023+"], "description": "Chronological operational epoch" },
+        "sector": { "type": "string", "enum": ["Civil", "Electrical", "Mechanical", "Oil & Gas", "Water & Power", "Aviation", "Industrial"] },
+        "categoryId": { "type": "string", "description": "Foreign key reference to ProjectCategory" },
+        "category": { "type": "string", "description": "Human readable category label" },
+        "location": { "type": "string", "description": "Site municipality in Saudi Arabia" },
+        "status": { "type": "string", "enum": ["Planning", "Ongoing", "Completed", "Archived"] },
+        "description": { "type": "string", "description": "Technical narrative and project overview" },
+        "scope": { "type": "array", "description": "Key contractual deliverables" },
+        "features": { "type": "array", "description": "Engineering highlights" },
+        "featuredImage": { "type": "string", "description": "Primary thumbnail asset URL" },
+        "galleryImages": { "type": "array", "description": "Image gallery assets" },
+        "isPublished": { "type": "boolean", "description": "Public catalog visibility" },
+        "completionDate": { "type": "string", "description": "Handover completion date" },
+        "seoTitle": { "type": "string" },
+        "seoDescription": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "slug", "client", "year", "era", "sector", "category", "location", "status", "isPublished", "createdAt"]
+    },
+    "ServiceCategory": {
+      "title": "ServiceCategory",
+      "description": "Division category grouping for core technical capabilities",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "divisionNumber": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "displayOrder": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "divisionNumber", "name", "slug", "displayOrder", "isActive", "createdAt"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "Contractor engineering division capability offering",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "divisionNumber": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "shortDesc": { "type": "string" },
+        "fullDesc": { "type": "string" },
+        "capabilities": { "type": "array" },
+        "teamComposition": { "type": "array" },
+        "keyHighlights": { "type": "array" },
+        "image": { "type": "string" },
+        "isPublished": { "type": "boolean" },
+        "seoTitle": { "type": "string" },
+        "seoDescription": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "divisionNumber", "title", "slug", "shortDesc", "fullDesc", "isPublished", "createdAt"]
+    },
+    "BlogCategory": {
+      "title": "BlogCategory",
+      "description": "Taxonomy category for technical articles and news",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "description": { "type": "string" },
+        "displayOrder": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "slug", "displayOrder", "createdAt"]
+    },
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "Technical insights article or company press release",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "readTime": { "type": "string" },
+        "author": { "type": "string" },
+        "summary": { "type": "string" },
+        "content": { "type": "array" },
+        "tags": { "type": "array" },
+        "status": { "type": "string", "enum": ["Draft", "Published", "Scheduled", "Archived"] },
+        "featuredImage": { "type": "string" },
+        "seoTitle": { "type": "string" },
+        "seoDescription": { "type": "string" },
+        "ogImage": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "slug", "category", "author", "summary", "status", "createdAt"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "Verified client endorsement and project reference",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientName": { "type": "string" },
+        "company": { "type": "string" },
+        "position": { "type": "string" },
+        "testimonialText": { "type": "string" },
+        "profileImage": { "type": "string" },
+        "projectId": { "type": "string" },
+        "displayOrder": { "type": "number" },
+        "isPublished": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "clientName", "company", "testimonialText", "isPublished", "createdAt"]
+    },
+    "TeamMember": {
+      "title": "TeamMember",
+      "description": "Executive director or lead engineer profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "position": { "type": "string" },
+        "department": { "type": "string" },
+        "biography": { "type": "string" },
+        "profileImage": { "type": "string" },
+        "linkedinUrl": { "type": "string" },
+        "displayOrder": { "type": "number" },
+        "isPublished": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "position", "biography", "isPublished", "createdAt"]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "Inbound public contact form message",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "company": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["New", "Read", "In Progress", "Resolved", "Archived"] },
+        "internalNotes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "email", "phone", "subject", "message", "status", "createdAt"]
+    },
+    "QuoteRequest": {
+      "title": "QuoteRequest",
+      "description": "Inbound tender quotation and scope proposal request",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "companyName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "projectType": { "type": "string" },
+        "projectLocation": { "type": "string" },
+        "estimatedBudget": { "type": "string" },
+        "timeline": { "type": "string" },
+        "scopeDescription": { "type": "string" },
+        "attachmentName": { "type": "string" },
+        "attachmentUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["New", "Contacted", "Qualified", "Proposal Sent", "Won", "Lost", "Closed"] },
+        "internalNotes": { "type": "string" },
+        "assignedAdmin": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "fullName", "companyName", "email", "phone", "projectType", "projectLocation", "scopeDescription", "status", "createdAt"]
+    },
+    "TenderSubmission": {
+      "title": "TenderSubmission",
+      "description": "Formal bidding prequalification dossier and commercial proposal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyName": { "type": "string" },
+        "crNumber": { "type": "string" },
+        "contactPerson": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "projectSector": { "type": "string" },
+        "proposedValue": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["SUBMITTED", "UNDER_REVIEW", "PREQUALIFIED", "SHORTLISTED", "REJECTED"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "companyName", "crNumber", "contactPerson", "email", "phone", "projectSector", "status", "createdAt"]
+    },
+    "MediaItem": {
+      "title": "MediaItem",
+      "description": "File or image asset metadata entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileType": { "type": "string" },
+        "fileSize": { "type": "number" },
+        "url": { "type": "string" },
+        "altText": { "type": "string" },
+        "uploadedBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "fileName", "fileType", "url", "uploadedBy", "createdAt"]
+    },
+    "WebsiteSettings": {
+      "title": "WebsiteSettings",
+      "description": "Global corporate parameters and contact identifiers",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string" },
+        "arabicName": { "type": "string" },
+        "tagline": { "type": "string" },
+        "subTagline": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "businessHours": { "type": "string" },
+        "commercialReg": { "type": "string" },
+        "vatNumber": { "type": "string" },
+        "chamberNumber": { "type": "string" },
+        "primaryBank": { "type": "string" },
+        "secondaryBank": { "type": "string" },
+        "defaultSeoTitle": { "type": "string" },
+        "defaultSeoDescription": { "type": "string" },
+        "defaultOgImage": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["companyName", "email", "phone", "address", "updatedAt"]
+    },
+    "SocialLink": {
+      "title": "SocialLink",
+      "description": "Official company social media profile link",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "platform": { "type": "string", "enum": ["LinkedIn", "Twitter", "YouTube", "Instagram", "Facebook", "WhatsApp"] },
+        "url": { "type": "string" },
+        "iconName": { "type": "string" },
+        "displayOrder": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "platform", "url", "isActive", "createdAt"]
+    },
+    "SeoMetadata": {
+      "title": "SeoMetadata",
+      "description": "Page-level SEO tags and Open Graph specifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "pageKey": { "type": "string" },
+        "seoTitle": { "type": "string" },
+        "metaDescription": { "type": "string" },
+        "canonicalUrl": { "type": "string" },
+        "ogTitle": { "type": "string" },
+        "ogDescription": { "type": "string" },
+        "ogImage": { "type": "string" },
+        "robots": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "pageKey", "seoTitle", "metaDescription", "createdAt"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Immutable security and CMS modification audit trail",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "adminEmail": { "type": "string" },
+        "adminName": { "type": "string" },
+        "action": { "type": "string" },
+        "entity": { "type": "string" },
+        "entityId": { "type": "string" },
+        "description": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "metadata": { "type": "object" }
+      },
+      "required": ["id", "adminEmail", "adminName", "action", "entity", "description", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Registered administrator accounts and role privileges"
+    },
+    "/archived_administrators/{archiveId}": {
+      "schema": { "type": "object" },
+      "description": "Safely archived deleted administrator records and audit traces"
+    },
+    "/project_categories/{catId}": {
+      "schema": { "$ref": "#/entities/ProjectCategory" },
+      "description": "Engineering categories for portfolio grouping"
+    },
+    "/projects/{projectId}": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Executed and ongoing infrastructure projects catalog"
+    },
+    "/service_categories/{catId}": {
+      "schema": { "$ref": "#/entities/ServiceCategory" },
+      "description": "Technical service divisions classification"
+    },
+    "/services/{serviceId}": {
+      "schema": { "$ref": "#/entities/Service" },
+      "description": "Comprehensive engineering capabilities and divisions"
+    },
+    "/blog_categories/{catId}": {
+      "schema": { "$ref": "#/entities/BlogCategory" },
+      "description": "Knowledge base and insights taxonomy"
+    },
+    "/blog_posts/{postId}": {
+      "schema": { "$ref": "#/entities/BlogPost" },
+      "description": "Published technical thought leadership articles"
+    },
+    "/testimonials/{testId}": {
+      "schema": { "$ref": "#/entities/Testimonial" },
+      "description": "Verified client endorsements from major Saudi operators"
+    },
+    "/team_members/{memberId}": {
+      "schema": { "$ref": "#/entities/TeamMember" },
+      "description": "Corporate executive and engineering leadership roster"
+    },
+    "/contact_messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ContactMessage" },
+      "description": "Public general and procurement inquiries"
+    },
+    "/quote_requests/{quoteId}": {
+      "schema": { "$ref": "#/entities/QuoteRequest" },
+      "description": "Client tender invitations and project scope estimations"
+    },
+    "/tender_submissions/{tenderId}": {
+      "schema": { "$ref": "#/entities/TenderSubmission" },
+      "description": "Formal bidding prequalification dossiers"
+    },
+    "/media/{mediaId}": {
+      "schema": { "$ref": "#/entities/MediaItem" },
+      "description": "Asset library registry"
+    },
+    "/website_settings/{settingId}": {
+      "schema": { "$ref": "#/entities/WebsiteSettings" },
+      "description": "Dynamic website configuration variables"
+    },
+    "/social_links/{linkId}": {
+      "schema": { "$ref": "#/entities/SocialLink" },
+      "description": "Official company social media destinations"
+    },
+    "/seo_metadata/{seoId}": {
+      "schema": { "$ref": "#/entities/SeoMetadata" },
+      "description": "Page-level indexing and search engine metadata"
+    },
+    "/activity_logs/{logId}": {
+      "schema": { "$ref": "#/entities/ActivityLog" },
+      "description": "Administrative actions audit log"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "token": "2e08005980af72e91efd59ed388a038be6f6de8007922d48ece7856b38c69aa2",
+    "adminId": "KR-ADMIN-001",
+    "fullName": "Kingdom Rise Super Administrator",
+    "email": "admin@kingdomrise.com",
+    "role": "SUPER_ADMIN",
+    "status": "ACTIVE",
+    "createdAt": "2026-09-25T18:31:50.871Z",
+    "expiresAt": "2026-09-26T02:31:50.871Z"
+  },
+  {
+    "token": "942e2c27efb2745a68c9da8228ce6650cc47837a5d8a7d56e03184379170f02e",
+    "adminId": "KR-ADMIN-001",
+    "fullName": "Kingdom Rise Super Administrator",
+    "email": "admin@kingdomrise.com",
+    "role": "SUPER_ADMIN",
+    "status": "ACTIVE",
+    "createdAt": "2026-09-25T18:31:57.282Z",
+    "expiresAt": "2026-09-26T02:31:57.282Z"
+  },
+  {
+    "token": "66e9cbcc19431a5fe17f23ed473bb48404a48403470b9e5ed55952345f14a684",
+    "adminId": "KR-ADMIN-002",
+    "fullName": "Eng. Tariq Al-Ghamdi",
+    "email": "tariq@kingdomrise.com",
+    "role": "ADMIN",
+    "status": "ACTIVE",
+    "createdAt": "2026-09-25T18:32:04.145Z",
+    "expiresAt": "2026-09-26T02:32:04.145Z"
+  }
+]

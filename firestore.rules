@@ -1,0 +1,145 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if authenticated user is registered as an admin
+    function isAdmin() {
+      return isAuthenticated() && 
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+    
+    // Helper function to check user role from admin document
+    function getAdminData() {
+      return get(/databases/$(database)/documents/admins/$(request.auth.uid)).data;
+    }
+    
+    function isSuperAdmin() {
+      return isAdmin() && getAdminData().role == 'SUPER_ADMIN';
+    }
+
+    function isEditorOrHigher() {
+      return isAdmin() && (
+        getAdminData().role == 'SUPER_ADMIN' || 
+        getAdminData().role == 'ADMIN' || 
+        getAdminData().role == 'EDITOR'
+      );
+    }
+
+    // Admins & Sessions Collections
+    // Strict Zero-Trust: Accessed and authenticated strictly via secure server-side API endpoints
+    match /admins/{adminId} {
+      allow read, write: if false;
+    }
+
+    match /archived_administrators/{archiveId} {
+      allow read, write: if false;
+    }
+
+    match /sessions/{sessionId} {
+      allow read, write: if false;
+    }
+
+    // Projects: Public can read published projects; Editors/Admins can read all and write
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // Services: Public can read; Editors/Admins can write
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // Blog Posts: Public can read; Editors/Admins can write
+    match /blog_posts/{postId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // Categories (Projects, Services & Blog)
+    match /categories/{catId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    match /project_categories/{catId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    match /service_categories/{catId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    match /blog_categories/{catId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    match /social_links/{linkId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // Testimonials
+    match /testimonials/{testId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // Team Members
+    match /team_members/{memberId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // Contact Messages: Anyone can create; only Admins can read and update
+    match /contact_messages/{messageId} {
+      allow create: if true;
+      allow read, update, delete: if isEditorOrHigher();
+    }
+
+    // Quote Requests: Anyone can create; only Admins can read and update
+    match /quote_requests/{quoteId} {
+      allow create: if true;
+      allow read, update, delete: if isEditorOrHigher();
+    }
+
+    // Tender Submissions: Anyone can create; only Admins can read, update, delete
+    match /tender_submissions/{tenderId} {
+      allow create: if true;
+      allow read, update, delete: if isEditorOrHigher();
+    }
+
+    // Media Library
+    match /media/{mediaId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // Website Settings
+    match /website_settings/{settingId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // SEO Metadata
+    match /seo_metadata/{seoId} {
+      allow read: if true;
+      allow write: if isEditorOrHigher();
+    }
+
+    // Activity Logs: only Admins can create and read
+    match /activity_logs/{logId} {
+      allow read, create: if isEditorOrHigher();
+      allow update, delete: if isSuperAdmin();
+    }
+  }
+}

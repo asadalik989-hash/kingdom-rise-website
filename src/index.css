@@ -1,0 +1,358 @@
+@import "tailwindcss";
+
+:root {
+  /* Default active brand tokens: Previous Refined Heritage Scheme (Royal Amber & Obsidian Gold) */
+  --color-brand-blue: #D97706;
+  --color-brand-blue-hover: #B45309;
+  --color-brand-blue-dark: #78350F;
+  --color-brand-blue-light: #FEF3C7;
+  --color-brand-teal: #F59E0B;
+  --color-brand-teal-hover: #D97706;
+  --color-brand-teal-dark: #B45309;
+  --color-brand-teal-light: #FFFBEB;
+  --color-brand-bg: #FAF8F5;
+  --color-brand-text: #1E293B;
+  --color-brand-muted: #78716C;
+  --color-brand-border: #E7E5E4;
+  --color-brand-surface: #FFFFFF;
+}
+
+/* 1. REFINED PREVIOUS SCHEME: Royal Amber Gold & Deep Obsidian */
+[data-color-scheme="amber-gold"] {
+  --color-brand-blue: #D97706;
+  --color-brand-blue-hover: #B45309;
+  --color-brand-blue-dark: #78350F;
+  --color-brand-blue-light: #FEF3C7;
+  --color-brand-teal: #F59E0B;
+  --color-brand-teal-hover: #D97706;
+  --color-brand-teal-dark: #B45309;
+  --color-brand-teal-light: #FFFBEB;
+  --color-brand-bg: #FAF8F5;
+  --color-brand-text: #1E293B;
+  --color-brand-muted: #78716C;
+  --color-brand-border: #E7E5E4;
+  --color-brand-surface: #FFFFFF;
+}
+
+/* 2. DUAL-TONE PREVIOUS SCHEME: Heritage Amber & Royal Navy */
+[data-color-scheme="classic-amber-navy"] {
+  --color-brand-blue: #D97706;
+  --color-brand-blue-hover: #B45309;
+  --color-brand-blue-dark: #78350F;
+  --color-brand-blue-light: #FEF3C7;
+  --color-brand-teal: #1E3A8A;
+  --color-brand-teal-hover: #172554;
+  --color-brand-teal-dark: #0F172A;
+  --color-brand-teal-light: #EFF6FF;
+  --color-brand-bg: #F8FAFC;
+  --color-brand-text: #0F172A;
+  --color-brand-muted: #64748B;
+  --color-brand-border: #E2E8F0;
+  --color-brand-surface: #FFFFFF;
+}
+
+/* 3. WARM EARTH PREVIOUS SCHEME: Burnished Bronze & Desert Sand */
+[data-color-scheme="warm-bronze-sand"] {
+  --color-brand-blue: #B45309;
+  --color-brand-blue-hover: #92400E;
+  --color-brand-blue-dark: #78350F;
+  --color-brand-blue-light: #FEF3C7;
+  --color-brand-teal: #F59E0B;
+  --color-brand-teal-hover: #D97706;
+  --color-brand-teal-dark: #B45309;
+  --color-brand-teal-light: #FFFBEB;
+  --color-brand-bg: #FCF9F5;
+  --color-brand-text: #1C1917;
+  --color-brand-muted: #78716C;
+  --color-brand-border: #E7E5E4;
+  --color-brand-surface: #FFFFFF;
+}
+
+/* 4. CORPORATE BRAND: Cobalt Blue & Coastal Teal */
+[data-color-scheme="blue-teal"] {
+  --color-brand-blue: #0052CC;
+  --color-brand-blue-hover: #0041A3;
+  --color-brand-blue-dark: #002D70;
+  --color-brand-blue-light: #EBF2FC;
+  --color-brand-teal: #00C7AE;
+  --color-brand-teal-hover: #00B39D;
+  --color-brand-teal-dark: #009683;
+  --color-brand-teal-light: #E6FAF7;
+  --color-brand-bg: #F4F7FA;
+  --color-brand-text: #1E293B;
+  --color-brand-muted: #64748B;
+  --color-brand-border: #E2E8F0;
+  --color-brand-surface: #FFFFFF;
+}
+
+/* 5. SAUDI VISION 2030: Royal Emerald & Oasis Jade */
+[data-color-scheme="emerald-vision"] {
+  --color-brand-blue: #047857;
+  --color-brand-blue-hover: #065F46;
+  --color-brand-blue-dark: #064E3B;
+  --color-brand-blue-light: #ECFDF5;
+  --color-brand-teal: #10B981;
+  --color-brand-teal-hover: #059669;
+  --color-brand-teal-dark: #047857;
+  --color-brand-teal-light: #D1FAE5;
+  --color-brand-bg: #F8FAFC;
+  --color-brand-text: #0F172A;
+  --color-brand-muted: #64748B;
+  --color-brand-border: #E2E8F0;
+  --color-brand-surface: #FFFFFF;
+}
+
+/* 6. HEAVY CIVIL: Structural Steel & Cyan */
+[data-color-scheme="steel-titanium"] {
+  --color-brand-blue: #2563EB;
+  --color-brand-blue-hover: #1D4ED8;
+  --color-brand-blue-dark: #1E3A8A;
+  --color-brand-blue-light: #EFF6FF;
+  --color-brand-teal: #06B6D4;
+  --color-brand-teal-hover: #0891B2;
+  --color-brand-teal-dark: #0E7490;
+  --color-brand-teal-light: #ECFEFF;
+  --color-brand-bg: #F1F5F9;
+  --color-brand-text: #0F172A;
+  --color-brand-muted: #475569;
+  --color-brand-border: #CBD5E1;
+  --color-brand-surface: #FFFFFF;
+}
+
+@theme {
+  --color-brand-blue: var(--color-brand-blue);
+  --color-brand-blue-hover: var(--color-brand-blue-hover);
+  --color-brand-blue-dark: var(--color-brand-blue-dark);
+  --color-brand-blue-light: var(--color-brand-blue-light);
+  --color-brand-teal: var(--color-brand-teal);
+  --color-brand-teal-hover: var(--color-brand-teal-hover);
+  --color-brand-teal-dark: var(--color-brand-teal-dark);
+  --color-brand-teal-light: var(--color-brand-teal-light);
+  --color-brand-bg: var(--color-brand-bg);
+  --color-brand-text: var(--color-brand-text);
+  --color-brand-muted: var(--color-brand-muted);
+  --color-brand-border: var(--color-brand-border);
+  --color-brand-surface: var(--color-brand-surface);
+}
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-text);
+    transition: background-color 0.25s ease, color 0.25s ease;
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-text);
+    transition: background-color 0.25s ease, color 0.25s ease;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  /* Responsive image scaling */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  [dir="rtl"] {
+    font-family: 'IBM Plex Sans Arabic', 'Cairo', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    text-align: right;
+  }
+
+  [dir="rtl"] input,
+  [dir="rtl"] textarea,
+  [dir="rtl"] select {
+    text-align: right;
+  }
+
+  [dir="rtl"] input[type="email"],
+  [dir="rtl"] input[type="tel"],
+  [dir="rtl"] input[type="url"],
+  [dir="rtl"] .font-mono {
+    direction: ltr;
+    text-align: left;
+  }
+}
+
+/* ========================================================================= */
+/* RESPONSIVE DESIGN TOKENS & VIEWPORT ADAPTATION UTILITIES                 */
+/* ========================================================================= */
+
+.app-container-fluid {
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 2.5vw, 2.5rem);
+  padding-right: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.table-responsive-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Accessibility: Safe interactive touch targets on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  button:not(.btn-compact),
+  [role="button"]:not(.btn-compact),
+  input:not([type="checkbox"]):not([type="radio"]),
+  select {
+    min-height: 44px;
+  }
+}
+
+/* Reduced Motion Override for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================================================= */
+/* DYNAMIC THEME BRIDGE: Maps hardcoded utility classes to reactive CSS tokens */
+/* ========================================================================= */
+
+.bg-\[\#0052CC\] { background-color: var(--color-brand-blue) !important; }
+.hover\:bg-\[\#0041A3\]:hover { background-color: var(--color-brand-blue-hover) !important; }
+.active\:bg-\[\#002D70\]:active { background-color: var(--color-brand-blue-dark) !important; }
+.text-\[\#0052CC\] { color: var(--color-brand-blue) !important; }
+.hover\:text-\[\#0052CC\]:hover { color: var(--color-brand-blue) !important; }
+:is(:where(.group):hover *) .group-hover\:text-\[\#0052CC\],
+.group:hover .group-hover\:text-\[\#0052CC\],
+.group-hover\:text-\[\#0052CC\]:hover { color: var(--color-brand-blue) !important; }
+.border-\[\#0052CC\] { border-color: var(--color-brand-blue) !important; }
+.hover\:border-\[\#0052CC\]:hover { border-color: var(--color-brand-blue) !important; }
+.focus\:border-\[\#0052CC\]:focus { border-color: var(--color-brand-blue) !important; }
+.focus\:ring-\[\#0052CC\]:focus { --tw-ring-color: var(--color-brand-blue) !important; }
+
+.bg-\[\#00C7AE\] { background-color: var(--color-brand-teal) !important; }
+.hover\:bg-\[\#00B39D\]:hover { background-color: var(--color-brand-teal-hover) !important; }
+.active\:bg-\[\#009683\]:active { background-color: var(--color-brand-teal-dark) !important; }
+.text-\[\#00C7AE\] { color: var(--color-brand-teal) !important; }
+.hover\:text-\[\#00C7AE\]:hover { color: var(--color-brand-teal) !important; }
+.group-hover\:text-\[\#00C7AE\]:hover { color: var(--color-brand-teal) !important; }
+.border-\[\#00C7AE\] { border-color: var(--color-brand-teal) !important; }
+.hover\:border-\[\#00C7AE\]:hover { border-color: var(--color-brand-teal) !important; }
+.focus\:border-\[\#00C7AE\]:focus { border-color: var(--color-brand-teal) !important; }
+.focus\:ring-\[\#00C7AE\]:focus { --tw-ring-color: var(--color-brand-teal) !important; }
+
+.bg-\[\#EBF2FC\] { background-color: var(--color-brand-blue-light) !important; }
+.hover\:bg-\[\#EBF2FC\]:hover { background-color: var(--color-brand-blue-light) !important; }
+.bg-\[\#E6FAF7\] { background-color: var(--color-brand-teal-light) !important; }
+.bg-\[\#F4F7FA\] { background-color: var(--color-brand-bg) !important; }
+.text-\[\#333333\] { color: var(--color-brand-text) !important; }
+.group-hover\:text-\[\#333333\]:hover { color: var(--color-brand-text) !important; }
+.text-\[\#888888\] { color: var(--color-brand-muted) !important; }
+.text-\[\#666666\] { color: var(--color-brand-muted) !important; }
+
+/* Translucent Alpha Overlays */
+.bg-\[\#00C7AE\]\/10 { background-color: color-mix(in srgb, var(--color-brand-teal) 10%, transparent) !important; }
+.bg-\[\#00C7AE\]\/15 { background-color: color-mix(in srgb, var(--color-brand-teal) 15%, transparent) !important; }
+.bg-\[\#00C7AE\]\/20 { background-color: color-mix(in srgb, var(--color-brand-teal) 20%, transparent) !important; }
+.bg-\[\#0052CC\]\/10 { background-color: color-mix(in srgb, var(--color-brand-blue) 10%, transparent) !important; }
+.bg-\[\#0052CC\]\/15 { background-color: color-mix(in srgb, var(--color-brand-blue) 15%, transparent) !important; }
+.bg-\[\#0052CC\]\/20 { background-color: color-mix(in srgb, var(--color-brand-blue) 20%, transparent) !important; }
+.border-\[\#00C7AE\]\/40 { border-color: color-mix(in srgb, var(--color-brand-teal) 40%, transparent) !important; }
+.border-\[\#00C7AE\]\/50 { border-color: color-mix(in srgb, var(--color-brand-teal) 50%, transparent) !important; }
+.hover\:border-\[\#00C7AE\]\/50:hover { border-color: color-mix(in srgb, var(--color-brand-teal) 50%, transparent) !important; }
+
+/* Gradients */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, var(--color-brand-blue) 0%, var(--color-brand-teal) 100%) !important;
+}
+
+.text-brand-gradient {
+  background: linear-gradient(135deg, var(--color-brand-blue) 0%, var(--color-brand-teal) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.from-\[\#0052CC\] {
+  --tw-gradient-from: var(--color-brand-blue) var(--tw-gradient-from-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)) !important;
+}
+
+.to-\[\#00C7AE\] {
+  --tw-gradient-to: var(--color-brand-teal) var(--tw-gradient-to-position) !important;
+}
+
+/* Card and Container Styles */
+.brand-card {
+  background-color: var(--color-brand-surface);
+  border: 1px solid var(--color-brand-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* Brand Form Elements */
+.brand-input {
+  background-color: var(--color-brand-surface);
+  border: 1px solid var(--color-brand-border);
+  color: var(--color-brand-text);
+  border-radius: 0.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.brand-input::placeholder {
+  color: var(--color-brand-muted);
+}
+.brand-input:focus {
+  border-color: var(--color-brand-blue);
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-brand-blue) 20%, transparent);
+}
+
+/* ========================================================================= */
+/* BUTTON SHADOWS: Neutral Shadows Preserved, Blue Drop-Shadows Removed      */
+/* ========================================================================= */
+/* Strip colored blue down-shadows while keeping standard button behavior */
+button.shadow-\[\#0052CC\],
+button[class*="shadow-[#0052CC]"],
+button[class*="shadow-blue"],
+[role="button"][class*="shadow-[#0052CC]"],
+[role="button"][class*="shadow-blue"] {
+  --tw-shadow-colored: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+}
+
+/* ========================================================================= */
+/* ACCESSIBILITY: PREFERS-REDUCED-MOTION GLOBAL SAFEGUARDS                  */
+/* ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================================================= */
+/* UNIFIED PROJECT CARD TITLE HOVER BEHAVIOR                                 */
+/* ========================================================================= */
+/*
+  Consistent hover color for project title:
+  Hovering anywhere inside .project-card (image, graph, card background,
+  content area, title, or description) activates the exact same hover color.
+  No separate hover color on the title itself.
+*/
+.project-card:hover .project-title {
+  color: var(--color-brand-blue) !important;
+}
+
+
